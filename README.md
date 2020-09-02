@@ -3,6 +3,7 @@
 ## Installing
 * Clone the repository
 * `npm i`
-* `npm start`
 
-## Add your `.srt` files to the `subtitles` directory.
+## Using
+* Add your `.srt` files to the `subtitles` directory.
+* `node index.js`
