@@ -5,7 +5,8 @@ require('colors')
 const srtFiles = fs.readdirSync('./subtitles').filter(fileName => fileName.includes('.srt'))
 const matches = []
 srtFiles.forEach(fileName => {
-  console.log(`Analyzing "${fileName}"`)
+  console.log('------------------------------------------------------'.gray)
+  console.log(`Analyzing "${fileName}"`.gray)
   const contents = fs.readFileSync(`./subtitles/${fileName}`).toString()
   curseWordStrings.forEach(curseWord => {
     if (contents.toLowerCase().includes(curseWord)) {
