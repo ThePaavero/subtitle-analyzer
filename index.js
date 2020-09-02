@@ -2,10 +2,11 @@ const fs = require('fs')
 const curseWordStrings = require('./curseWordStrings')
 require('colors')
 
-const srtFiles = fs.readdirSync('./').filter(fileName => fileName.includes('.srt'))
+const srtFiles = fs.readdirSync('./subtitles').filter(fileName => fileName.includes('.srt'))
 const matches = []
-srtFiles.forEach((fileName) => {
-  const contents = fs.readFileSync(fileName).toString()
+srtFiles.forEach(fileName => {
+  console.log(`Analyzing "${fileName}"`)
+  const contents = fs.readFileSync(`./subtitles/${fileName}`).toString()
   curseWordStrings.forEach(curseWord => {
     if (contents.toLowerCase().includes(curseWord)) {
       matches.push({
@@ -14,4 +15,9 @@ srtFiles.forEach((fileName) => {
       })
     }
   })
+})
+
+srtFiles.forEach(fileName => {
+  const myCurseWords = matches.filter(m => m.fileName === fileName)
+  // console.log(myCurseWords)
 })
