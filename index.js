@@ -15,9 +15,6 @@ srtFiles.forEach(fileName => {
       })
     }
   })
-})
-
-srtFiles.forEach(fileName => {
   const myMatches = matches.filter(m => m.fileName === fileName)
   console.log(`Results for ${fileName} (${myMatches.length} curse words):`.bgGreen.white)
   console.log(myMatches.map(m => m.curseWord).join(', '))
