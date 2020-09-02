@@ -1,5 +1,5 @@
 const fs = require('fs')
-const curseWordStrings = require('./curseWordStrings')
+const curseWordStrings = require('./curseWordStrings') // Courtesy of https://www.purgomalum.com/profanitylist.html
 require('colors')
 
 const srtFiles = fs.readdirSync('./subtitles').filter(fileName => fileName.includes('.srt'))
@@ -18,6 +18,7 @@ srtFiles.forEach(fileName => {
 })
 
 srtFiles.forEach(fileName => {
-  const myCurseWords = matches.filter(m => m.fileName === fileName)
-  // console.log(myCurseWords)
+  const myMatches = matches.filter(m => m.fileName === fileName)
+  console.log(`Results for ${fileName} (${myMatches.length} curse words):`.bgGreen.white)
+  console.log(myMatches.map(m => m.curseWord).join(', '))
 })
